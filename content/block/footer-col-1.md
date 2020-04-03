@@ -1,3 +1,3 @@
-#### Footer col 1
+#### Min hemsida
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+[Som bara funkar om servern är på....](http://idalam.se/)

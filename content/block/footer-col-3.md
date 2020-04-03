@@ -1,3 +1,3 @@
-#### Footer col 3
+#### Läser en någon det här?
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Hej på dig, visste inte att någon skulle läsa denna rutan.
