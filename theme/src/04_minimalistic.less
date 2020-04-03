@@ -1,0 +1,66 @@
+/*!
+ * Stylesheet for design kmom04 - minimalistic.
+ *
+ * This stylesheet is for the design course and kmom02 where we use LESS.
+ */
+
+/**
+* Import Fonts
+*/
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Open+Sans&display=swap');
+
+/**
+ * Normalize and reset the style.
+ */
+@import "normalize.css/normalize.less";
+
+/**
+ * Font Awesome.
+ */
+@import "@fortawesome/fontawesome-free/less/fontawesome.less";
+@import "@fortawesome/fontawesome-free/less/solid.less";
+@import "@fortawesome/fontawesome-free/less/brands.less";
+
+
+/**
+* Internal self contained modules, save in directory module/.
+*/
+
+
+/**
+ * Import the vertical grid.
+ */
+@import "@desinax/vertical-grid/less/grid.less";
+
+/**
+* Import the typographic grid.
+*/
+@import "@desinax/typographic-grid/less/typography-font-families.less";
+@import "@desinax/typographic-grid/less/typography-defaults.less";
+
+/**
+* A responsive menu.
+*/
+@import "@desinax/responsive-menu/less/responsive-menu.less";
+@import "@desinax/responsive-menu/less/media-queries.less";
+
+/**
+* Base style to affect HTML elements on a general scale.
+*/
+
+@import "base/base04.less";
+
+/**
+* Layout style for general structure of header, navbar, main, footer
+* and other regions of the page including route specific styles.
+*/
+@import "layout/layout04.less";
+@import "layout/responsive03.less";
+@import "layout/regions.less";     // To add style for ?regions
+
+
+/**
+* Minimalistic theme
+*/
+
+@import "modules/minimalistic.less";

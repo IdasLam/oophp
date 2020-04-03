@@ -1,0 +1,28 @@
+/**
+ * Base style to affect HTML elements on a general scale.
+ */
+
+@bgColor: #ff85c0;
+@fontFamilyBody: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,Fira Sans,sans-serif;
+@color: #fff;
+
+html {
+    overflow-y: scroll;
+    // background-color: @bgColorHtml;
+}
+
+html,
+body {
+    background-color: @bgColor;
+    margin: 0;
+    font-family: @fontFamilyBody;
+    color: @color;
+}
+
+// Activate the grid base font
+body {
+    #desinax-hgrid.font(@fontSizeBody);
+}
+
+// Activate grid and affect all typographic elements
+#desinax-hgrid.activateDefaultTypography();

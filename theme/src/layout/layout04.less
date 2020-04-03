@@ -1,0 +1,272 @@
+/**
+ * Layout style for general structure of header, navbar, main, footer
+ * and other regions of the page including route specific styles.
+ */
+
+/**
+ * Variables
+ */
+
+@hoverColor: #e64fa2;
+@boxshadow: #fff;
+@navbarColor: #fff;
+@color: #fff;
+@import "@desinax/figure/less/figure.less";
+
+/* kmom03 grid */
+.row {
+    #desinax-vgrid.row();
+}
+
+.inner-wrap {
+    #desinax-vgrid.grid(1100px);
+}
+
+.vgrid .inner-wrap {
+    @gridImage: "../img/grid_24x30x10-nomargin.png";
+    #desinax-vgrid.showGrid(@gridImage, 1100px);
+
+    &.inner-wrap-header,
+    &.inner-wrap-footer {
+        #desinax-vgrid.showGrid(@gridImage);
+    }
+}
+
+// Show the grid
+.hgrid .inner-wrap {
+    @gridImage: "../img/magic-number-@{magicNumber}.png";
+    #desinax-hgrid.showGrid(@gridImage);
+}
+
+/* Header and navbar */
+.rm-desktop ul {
+    background-color: @bgColorBody !important;
+}
+
+.rm-default.rm-mobile.rm-clicked {
+    background-color: @color;
+}
+
+.rm-mobile,
+.rm-max .rm-small .rm-button.rm-clicked {
+    color: @bgColorBody;
+}
+
+
+
+.outer-wrap-header {
+    background-color: @bgColorBody;
+    padding: 2vh;
+    
+    .inner-wrap-header {
+        #desinax-vgrid.grid(100%);
+    }
+
+    .site-logo-text {
+        font-family: 'Playfair Display', serif;
+
+        a {
+            font-size: 1.7em;
+            text-decoration: none;
+        }
+    }
+
+    .region-header {
+        font-size: 1.5em;
+
+        .region-header-col-1,
+        .region-header-col-3 {
+            #desinax-vgrid.column(8);
+        }
+
+        .region-header-col-2 {
+            #desinax-vgrid.column(11);
+        }
+    }
+
+    .site-logo-text-icon img {
+        height: 80px;
+        padding-left: 38%;
+    }
+
+    .site-logo {
+        display: none;
+    }
+
+    .my-navbar.rm-default.rm-desktop {
+        list-style: none;
+    }
+    
+    .my-navbar.rm-default.rm-desktop li a {
+        padding-left: 0;
+        color: @navbarColor;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    .my-navbar.rm-default.rm-desktop li a:hover {
+        color: @accentColor;
+    }
+
+    .rm-button.rm-clicked {
+        color: @bgColorBody;
+    }
+
+    .rm-max.rm-navbar {
+        top: 5vh;
+        right: 2.4vw;
+    }
+
+}
+
+/* homepage */
+.hero-block {
+    p:first-child {
+        #desinax-vgrid.push(10);
+        img {
+            margin-left: -10px;
+            width: 265px;
+            box-shadow: 10px 10px @bgColor;
+        }
+    }
+
+    .text-about-me {
+        #desinax-vgrid.push(4);
+        h1,
+        p {
+            margin-left: 15px;
+        }
+    }
+}
+
+/* byline */
+.byline {
+    padding: 5vh 0;
+    #desinax-vgrid.push(4);
+    
+    img {
+        #desinax-vgrid.column(4);
+        width: 100px;
+        border-radius: 50%;
+        margin-left: 15px;
+    }
+    
+    p {
+        margin-left: 25%;
+    }
+}
+
+/* footer */
+.footer-column {
+    #desinax-vgrid.column(@columns / 3);
+}
+
+.site-footer {
+    #desinax-vgrid.push(10);
+}
+
+/* background color on other pages */
+.outer-wrap-main {
+    background-color: @bgColorBody;
+    box-shadow: 0px 20px 20px @boxshadow;
+    padding: 2vh;
+
+    .region-main {
+        #desinax-vgrid.column(16);
+        #desinax-vgrid.push(1);
+    }
+
+    .region-sidebar-left{
+        #desinax-vgrid.column(7);
+    }
+}
+
+/* Redovisningar page */
+
+body[class^=route-redovisning] {
+    .breadcrumb-list {
+        display: none;
+    }
+
+    .outer-wrap-flash-message {
+        padding: 20px;
+        background-color: @bgColorBody;
+    }
+}
+
+body[class^=route-redovisning],
+body[class^=route-verktyg] {
+    .block.toc .toc {
+        list-style: none;
+        padding-left: 2.5vw;
+    }
+
+    .block.toc .toc li a {
+        color: @color;
+    }
+}
+
+/* rapport */
+body[class^=route-rapport] {
+    .outer-wrap-breadcrumb {
+        display: none;
+    }
+}
+
+/* About page */
+.route-om {
+    .row {
+        .region-main {
+            #desinax-vgrid.column(16);
+        }
+        
+        .region-sidebar-right {
+            #desinax-vgrid.column(7);
+            #desinax-vgrid.push(1);
+        }
+    }
+}
+
+/* stylechooser page */
+.route-style {
+    .outer-wrap-flash-message {
+        background-color: @bgColorBody;
+        padding: 10px;
+    }
+
+    .region-main {
+        #desinax-vgrid.column(@columns * 3 / 4);
+        #desinax-vgrid.push(3);
+    }
+}
+
+/* tools page */
+body[class^=route-verktyg] {
+    .breadcrumb-list {
+        display: none;
+    }
+
+    .region-flash {
+        display: none;
+    }
+}
+
+/* test page*/
+.route-test {
+    // #desinax-vgrid.push(1);
+    .inner-wrap-main {
+        .region-sidebar-right,
+        .region-sidebar-left {
+            #desinax-vgrid.column(@columns / 4 - 1);
+        }
+
+        .region-sidebar-right {
+            #desinax-vgrid.push(1);
+        }
+        
+        .region-main {
+            #desinax-vgrid.column(@columns * 2 / 4);
+            #desinax-vgrid.push(1);
+        }
+    }
+}
