@@ -38,7 +38,7 @@ if (isset($number)) {
     echo "<h2>Game has been reset</h2>";
 }
 
-if ($tries <= 0 || $peak === TRUE && !isset($number)) {
+if ($tries <= 0 || $peak === true && !isset($number)) {
     echo "<p>Answer is $cheat.</p>";
 }
 ?>

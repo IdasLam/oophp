@@ -1,5 +1,6 @@
 <?php
 namespace Ida\Guess;
+
 use Exception;
 
 /**

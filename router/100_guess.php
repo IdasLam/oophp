@@ -29,7 +29,7 @@ $app->router->get("guess/init", function () use ($app) {
  */
 $app->router->get("guess/play", function () use ($app) {
     $title = "Guessing game";
-    $answer = $_SESSION["answer"] ?? NULL;
+    $answer = $_SESSION["answer"] ?? null;
     // $tries =  $_SESSION["player"]->getTotalTries() ?? $_SESSION["player"]->tries();
     $_SESSION["tries"] = $_SESSION["player"]->tries();
     $cheat = $_SESSION["player"]->number();
@@ -37,8 +37,8 @@ $app->router->get("guess/play", function () use ($app) {
         "cheat" => $cheat,
         "tries" => $_SESSION["tries"],
         "answer" => $answer,
-        "number" => $_SESSION["guess"] ?? NULL,
-        "peak" => $_SESSION["peak"] ?? FALSE,
+        "number" => $_SESSION["guess"] ?? nul,
+        "peak" => $_SESSION["peak"] ?? false,
     ];
 
     $app->page->add("guess/play", $data);
@@ -63,11 +63,11 @@ $app->router->post("guess/play", function () use ($app) {
         $_SESSION["answer"] = $_SESSION["player"]->makeGuess($number);
         $_SESSION["guess"] = $number;
     } else {
-        $_SESSION["guess"] = NULL;
+        $_SESSION["guess"] = null;
     }
 
     if (isset($_POST["cheat"])) {
-        $_SESSION["peak"] = TRUE;
+        $_SESSION["peak"] = true;
     }
 
     return $app->response->redirect("guess/play");
