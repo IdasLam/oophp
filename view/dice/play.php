@@ -12,36 +12,14 @@ namespace Anax\View;
 
 echo "<h1>Dice 100</h1>";
 
-// if (isset($_POST["reset"])) {
-//     echo "<h1>Guess a new number</h1>";
-// } else {
-//     echo "<h1>Guess a number</h1>";
-// }
-// echo "<p> Guess a number inbetween 1 and 100, you have " . $tries . " tries left.</p>";
 
-// if (isset($answer) && $answer === "correct" || $tries === 0) : ?>
-        <!-- <form method="post">
-//         <input type="submit" name="reset" value="Reset Game" class="button">
-//     </form> -->
-    <?php
-// else : ?>
-    <!-- <form method="post">
-//         <input type="text" name="number" autocomplete="off" autofocus>
-//         <input type="submit" name="guess" value="Make a Guess" class="button">
-//         <input type="submit" name="reset" value="Reset Game" class="button">
-//         <input type="submit" name="cheat" value="Cheat" class="button">
-//     </form> -->
-    <?php
-// endif;
-
-// if (isset($number)) {
-//     echo "<h2>Your guess: $number is <mark>$answer</mark></h2>";
-// } elseif (isset($_POST["reset"])) {
-//     echo "<h2>Game has been reset</h2>";
-// }
-
-// if ($tries <= 0 || $peak === true && !isset($number)) {
-//     echo "<p>Answer is $cheat.</p>";
-// }
 ?>
+<form method="POST">
+    <label for="players">How many players?</label>
+    <input type="number" name="players" min="2" max="5" required>
+
+    <label for="players">How many dices?</label>
+    <input type="number" name="dice" min="1" max="5" required>
+    <button>Play!</button>
+</form>
 </html>

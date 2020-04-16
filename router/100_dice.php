@@ -11,13 +11,14 @@
  */
 $app->router->get("dice/init", function () use ($app) {
     // init the session for the game.
+    $_SESSION = [];
 
-    session_name("dice");
+    session_name("diceGame");
     session_start();
 
-    if (!isset($_SESSION["player"])) {
-        $_SESSION["player"] = new Ida\Dice\Dice();
-    }
+    $_SESSION["dice"] = new Ida\Dice\DiceGame();
+
+    var_dump($_SESSION);
     
     return $app->response->redirect("dice/play");
 });
@@ -29,17 +30,6 @@ $app->router->get("dice/init", function () use ($app) {
 //  */
 $app->router->get("dice/play", function () use ($app) {
     $title = "Guessing game";
-    // $answer = $_SESSION["answer"] ?? null;
-    // $tries =  $_SESSION["player"]->getTotalTries() ?? $_SESSION["player"]->tries();
-    // $_SESSION["tries"] = $_SESSION["player"]->tries();
-    // $cheat = $_SESSION["player"]->number();
-    // $data = [
-    //     "cheat" => $cheat,
-    //     "tries" => $_SESSION["tries"],
-    //     "answer" => $answer,
-    //     "number" => $_SESSION["guess"] ?? null,
-    //     "peak" => $_SESSION["peak"] ?? false,
-    // ];
     $data = [];
 
     $app->page->add("dice/play", $data);
@@ -53,23 +43,73 @@ $app->router->get("dice/play", function () use ($app) {
  * Play the game - Dice
  */
 $app->router->post("dice/play", function () use ($app) {
-    // if (isset($_POST["reset"])) {
-    //     session_destroy();
-    //     return $app->response->redirect("guess/init");
-    //     // $_SESSION["totalTries"] =  $_SESSION["player"]->getTotalTries();
-    // }
+    // echo $_SESSION["dice"];
+    $_SESSION["dice"]->setGame($_POST["players"], $_POST["dice"]);
+    $_SESSION["begin"] = true;
+
+    return $app->response->redirect("dice/play-game");
+});
+
+/**
+ * Play the game - Dice
+ */
+$app->router->post("dice/play-game", function () use ($app) {
+    if ($_POST["start"]) {
+        $_SESSION["begin"] = false;
+        $players = intval($_SESSION["dice"]->getPlayers());
+
+        for ($i = 1; $i <= $players; $i++) {
+            $_SESSION["dice"]->rollDice("$i", true);
+        }
+
+        $playerOrder = $_SESSION["dice"]->getplayerOrder();
+
+        $_SESSION["turns"] = $_SESSION["dice"]->getTurn();
+        $_SESSION["dice"]->setCurrentTurn(array_key_first($playerOrder));
+    } elseif ($_POST["p1Roll"]) {
+        $_SESSION["dice"]->nextRound();
+        $_SESSION["dice"]->rollDice("p1");
+    } else {
+        
+    }
+
+    // var_dump($_POST);
+    // echo $_SESSION["dice"];
+    // $_SESSION["dice"]->setGame($_POST["players"], $_POST["dice"]);
+    // $_SESSION["begin"] = true;
+
+    return $app->response->redirect("dice/play-game");
+});
+
+/**
+ * Play the game - Dice
+ */
+$app->router->get("dice/play-game", function () use ($app) {
+    $title = "Guessing game";
+    $players = $_SESSION["dice"]->getPlayers();
+    $currentPlayer = $_SESSION["dice"]->getCurrentTurn();
     
-    // if (isset($_POST["guess"]) && $_SESSION["tries"] > 0) {
-    //     $number = intval($_POST["number"]);
-    //     $_SESSION["answer"] = $_SESSION["player"]->makeGuess($number);
-    //     $_SESSION["guess"] = $number;
-    // } else {
-    //     $_SESSION["guess"] = null;
-    // }
+    if ($players === null) {
+        return $app->response->redirect("dice/play");
+    } else {
+        // for ($i = 1; $i <= $players; $i++) {
 
-    // if (isset($_POST["cheat"])) {
-    //     $_SESSION["peak"] = true;
-    // }
+        // }
+    }
 
-    return $app->response->redirect("dice/play");
+    $data = [
+        "players" => $players ?? "None",
+        "dice" => $_SESSION["dice"]->getDice() ?? "None",
+        "round" => $_SESSION["dice"]->getRound(),
+        "begin" => $_SESSION["begin"],
+        "turn" => $_SESSION["turns"] ?? null,
+        "currentTurn" => $currentPlayer === "p1" ? "You": $currentPlayer,
+        "order" => $_SESSION["dice"]->getplayerOrder() ?? null
+    ];
+
+    $app->page->add("dice/play-dice", $data);
+
+    return $app->page->render([
+        "title" => $title,
+    ]);
 });
