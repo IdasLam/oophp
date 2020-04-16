@@ -5630,6 +5630,14 @@ body[class^=route-verktyg] .region-flash {
   margin-right: 0.52083333%;
   margin-left: 4.6875%;
 }
+.player_dice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+}
+.player_dice .selected {
+  background-color: #90da90;
+}
 /**
  * Layout for responsive style through media queries.
  */
