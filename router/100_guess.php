@@ -37,7 +37,7 @@ $app->router->get("guess/play", function () use ($app) {
         "cheat" => $cheat,
         "tries" => $_SESSION["tries"],
         "answer" => $answer,
-        "number" => $_SESSION["guess"] ?? nul,
+        "number" => $_SESSION["guess"] ?? null,
         "peak" => $_SESSION["peak"] ?? false,
     ];
 
