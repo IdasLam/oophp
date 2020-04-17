@@ -2,77 +2,46 @@
 
 namespace Anax\View;
 
-/**
- * Render content within an article.
- */
-
-// Show incoming variables and view helper functions
-//echo showEnvironment(get_defined_vars(), get_defined_functions());
-// var_dump($data);
-
-echo "<h1>Dice 100</h1>";
-echo "<p>Round: $round</p>";
-echo "<p>players: $players</p>";
-echo "<p>begin : $begin</p>";
-// echo "<p>begin : $turn</p>";
-var_dump($turn);
-echo "<br>";
-echo "<br>";
-echo "order:";
-var_dump($order);
-
-echo "<p>current turn : $currentTurn</p>";
-// var_dump($currentTurn);
+$players = $diceGame->getPlayers();
+$playerTurn = $diceGame->getPlayerTurn();
+$finishedGame = $diceGame->getfinishedGame();
 ?>
-<div class="player_dice">
-    <?php
-    foreach ($turn as $key => $value) {
-        $values = implode(", ", $value);
-        if ($currentTurn != "p1") {
-            echo "<div>";
-        } else {
-            echo "<div class=selected>";
-        }
 
-        echo "<h2>Player: $key</h2>";
-        echo "<p>Rolled: $values</p>";
-        echo "</div>";
-    } ?>
-    <?#php
-    // foreach ($order as $key => $value) {
-    //     $values = implode(", ", $turn[$key]);
-    //     if ($key != "p1") {
-    //         echo "<div>";
-    //         echo "<h2>Player: $key</h2>";
-    //     } else {
-    //         echo "<div class=selected>";
-    //         echo "<h2>Player: You</h2>";
-    //     }
-        
-    //     echo "<p>Rolled: $values</p>";
-    //     echo "</div>";
-    // } ?>
+<h1>Dice game 100</h1>
+
+<?php if (!$finishedGame): ?>
+<?php if (!$diceGame->hasOrder()):?>
+    <form action="" method="post">
+        <input type="submit" name="order" value="Roll for order">
+    </form>
+<?php endif ?> 
+
+<div class="player_dice">
+    <?php for ($i = 0; $i < count($players); $i++): ?>
+    <?php if ($playerTurn === $i): ?>
+        <div class="selected">
+    <?php else: ?>
+        <div>
+    <?php endif ?>
+            <h2>Player <?= $i + 1 ?></h2>
+            <p>Player total score: <?= $players[$i]->getScore() ?></p>
+            <p>Player round score: <?= $players[$i]->getRoundScore() ?></p>
+            <p><?= implode(", ", $players[$i]->getRoll()) ?></p>
+        </div>
+    <?php endfor ?>
 </div>
 
-<?php
-if ($begin === true) {
-?>
-<form method="POST">
-    <input type="submit" name="start" id="start" required value="Roll For Order">
-</form>
-</html>
-<?php
-} else {
-    if ($currentTurn === "You") {?>
-        <form method="POST">
-            <input type="submit" name="start" id="p1Roll" required value="Roll Dice(es)">
-            <input type="submit" name="start" id="next" required value="End turn">
-        </form>
-    <?php
-    } else { ?>
-    <form method="POST">
-        <input type="submit" name="start" id="continue" required value="Continue">
+<?php if ($playerTurn === 0): ?>
+    <form method="post">
+        <input type="submit" name="roll" value="Roll dice">
+        <input type="submit" name="endTurn" value="End turn">
     </form>
-    <?php
-    }
-}
+<?php elseif ($playerTurn != null): ?>
+    <form method="post">
+        <input type="submit" name="continue" value="continue">
+    </form>
+<?php endif ?>
+<?php else: ?>
+    <h2>The Winner is Player <?= $playerTurn + 1?></h2>
+    <a href="init">Play again?</a>
+<?php endif ?>
