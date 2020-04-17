@@ -5635,6 +5635,10 @@ body[class^=route-verktyg] .region-flash {
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
 }
+.player_dice div {
+  padding: 0 40px;
+  margin: 20px 0;
+}
 .player_dice .selected {
   background-color: #90da90;
 }
