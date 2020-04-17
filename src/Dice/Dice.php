@@ -8,11 +8,9 @@ class Dice
 {
     /**
      * @var int $sides   Sides of dice.
-     * @var int $face   face of dice.
      */
 
     private $sides = null;
-    private $face = null;
 
     /**
      * Constructor to initiate the object with current dice settings,
@@ -29,17 +27,6 @@ class Dice
      * Roll dice
      */
     public function roll() {
-        $this->face = rand(1, $this->sides);
+        return rand(1, $this->sides);
     }
-
-    /**
-     * Get face
-     * @return face of dice
-     */
-    public function getFace() {
-        return $this->face;
-    }
-
-
-
 }
