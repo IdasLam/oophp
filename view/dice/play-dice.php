@@ -4,7 +4,7 @@ namespace Anax\View;
 
 $players = $diceGame->getPlayers();
 $playerTurn = $diceGame->getPlayerTurn();
-$finishedGame = $diceGame->getfinishedGame();
+$finishedGame = $diceGame->getFinishedGame();
 ?>
 
 <h1>Dice game 100</h1>

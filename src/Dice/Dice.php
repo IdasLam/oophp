@@ -25,6 +25,7 @@ class Dice
 
     /**
      * Roll dice
+     * @return int random number from 1 to 6 (Default)
      */
     public function roll() {
         return rand(1, $this->sides);
