@@ -25,7 +25,6 @@ class DiceGame
     public function __construct(int $playerCount, int $diceCount)
     {
         for ($i = 0; $i < $playerCount; $i++) {
-
             $this->players[$i] = $i > 0 ? new Bot($diceCount) : new Player($diceCount);
         }
     }
@@ -52,7 +51,8 @@ class DiceGame
      * Roll players dice, if player rolled one then end the turn
      * @return void
      */
-    public function playerRoll() {
+    public function playerRoll()
+    {
         $this->players[$this->playerTurn]->roll();
         $rolledOne = $this->players[$this->playerTurn]->hasRolledOne();
 
@@ -67,7 +67,8 @@ class DiceGame
      * Roll dice for bot, if rolled one then end turn
      * @return void
      */
-    public function botRoll() {
+    public function botRoll()
+    {
         $isDone = $this->players[$this->playerTurn]->botRoll();
         $rolledOne = $this->players[$this->playerTurn]->hasRolledOne();
 
@@ -82,7 +83,8 @@ class DiceGame
      * Next turn for player when they dont want to roll again.
      * @return void
      */
-    public function nextTurn() {
+    public function nextTurn()
+    {
         $this->players[$this->playerTurn]->endTurn();
         $playerScore = $this->players[$this->playerTurn]->getScore();
 
@@ -117,7 +119,8 @@ class DiceGame
 
         arsort($order);
 
-        foreach($order as $key => $value) {
+        foreach ($order as $key => $value) {
+            $value= $value;
             $this->playerOrder[] = $key;
         }
 
@@ -128,7 +131,8 @@ class DiceGame
      * Get the order of the players
      * @return playerOrder
      */
-    public function getOrder() {
+    public function getOrder()
+    {
         return $this->playerOrder;
     }
 
@@ -136,7 +140,8 @@ class DiceGame
      * Get the current player name of the turn
      * @return void
      */
-    public function getPlayerTurn() {
+    public function getPlayerTurn()
+    {
         return $this->playerTurn;
     }
 
@@ -144,7 +149,8 @@ class DiceGame
      * Get status of game
      * @return finishedGame
      */
-    public function getFinishedGame() {
+    public function getFinishedGame()
+    {
         return $this->finishedGame;
     }
 }
