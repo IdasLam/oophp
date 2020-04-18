@@ -58,7 +58,7 @@ $app->router->post("dice/play-game", function () use ($app) {
     } elseif ($app->request->getPost("endTurn")) {
         $diceGame->nextTurn();
     } else {
-        $diceGame->BotRoll();
+        $diceGame->botRoll();
     }
 
     return $app->response->redirect("dice/play-game");
