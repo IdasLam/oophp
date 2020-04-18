@@ -93,7 +93,7 @@ class Player
      * Get this round score
      * @return roundScore Player score during their turn
      */
-    public function getroundScore()
+    public function getRoundScore()
     {
         return $this->roundScore;
     }
