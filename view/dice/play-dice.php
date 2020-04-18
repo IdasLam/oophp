@@ -40,8 +40,8 @@ $finishedGame = $diceGame->getFinishedGame();
     <form method="post">
         <input type="submit" name="continue" value="continue">
     </form>
-    <?php else : ?>
-    <h2>The Winner is Player <?= $playerTurn + 1?></h2>
-    <a href="init">Play again?</a>
     <?php endif ?>
+<?php else : ?>
+<h2>The Winner is Player <?= $playerTurn + 1?></h2>
+<a href="init">Play again?</a>
 <?php endif ?>
