@@ -14,22 +14,22 @@ $finishedGame = $diceGame->getFinishedGame();
     <form action="" method="post">
         <input type="submit" name="order" value="Roll for order">
     </form>
-    <?php endif ?> 
+    <?php endif; ?> 
 
-<div class="player_dice">
+    <div class="player_dice">
     <?php for ($i = 0; $i < count($players); $i++) : ?>
         <?php if ($playerTurn === $i) : ?>
         <div class="selected">
         <?php else : ?>
         <div>
-        <?php endif ?>
+        <?php endif; ?>
             <h2>Player <?= $i + 1 ?></h2>
             <p>Player total score: <?= $players[$i]->getScore() ?></p>
             <p>Player round score: <?= $players[$i]->getRoundScore() ?></p>
             <p><?= implode(", ", $players[$i]->getRoll()) ?></p>
         </div>
-    <?php endfor ?>
-</div>
+    <?php endfor; ?>
+    </div>
 
     <?php if ($playerTurn === 0) : ?>
     <form method="post">
@@ -40,8 +40,9 @@ $finishedGame = $diceGame->getFinishedGame();
     <form method="post">
         <input type="submit" name="continue" value="continue">
     </form>
-    <?php endif ?>
+    <?php endif; ?>
+
 <?php else : ?>
 <h2>The Winner is Player <?= $playerTurn + 1?></h2>
 <a href="init">Play again?</a>
-<?php endif ?>
+<?php endif; ?>
