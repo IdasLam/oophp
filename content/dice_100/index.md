@@ -1,3 +1,3 @@
 Dice 100
 =======
-[Spela spelet](dice/init)
+[Spela spelet](dice100/init)
