@@ -11,11 +11,14 @@ class DiceGame
      * @var int $playerOrder   Order to play.
      * @var int $playerTurn   Which players turn.
      * @var int $finishedGame   If game is finished.
+     * @var int histogram
      */
     private $players = [];
     private $playerOrder = [];
     private $playerTurn = null;
     private $finishedGame = false;
+    private $histogram;
+    private $diceHistogram;
 
     /**
      * Initialise player and bots
@@ -23,7 +26,10 @@ class DiceGame
      * @param int $diceCount Dice count
      */
     public function __construct(int $playerCount, int $diceCount)
-    {
+    {   
+        $this->diceHistogram = new DiceHistogram();
+        $this->histogram = new Histogram();
+
         for ($i = 0; $i < $playerCount; $i++) {
             $this->players[$i] = $i > 0 ? new Bot($diceCount) : new Player($diceCount);
         }
@@ -56,6 +62,10 @@ class DiceGame
         $this->players[$this->playerTurn]->roll();
         $rolledOne = $this->players[$this->playerTurn]->hasRolledOne();
 
+        $playerRoll = $this->players[$this->playerTurn]->getRoll();
+        $this->histogram->injectData($this->diceHistogram, $playerRoll);
+
+
         if ($rolledOne) {
             $this->players[$this->playerTurn]->resetRoundScore();
             $this->players[$this->playerTurn]->endTurn();
@@ -71,6 +81,9 @@ class DiceGame
     {
         $isDone = $this->players[$this->playerTurn]->botRoll();
         $rolledOne = $this->players[$this->playerTurn]->hasRolledOne();
+
+        $playerRoll = $this->players[$this->playerTurn]->getRoll();
+        $this->histogram->injectData($this->diceHistogram, $playerRoll);
 
         if ($rolledOne || $isDone) {
             $this->players[$this->playerTurn]->endTurn();
@@ -134,6 +147,15 @@ class DiceGame
     public function getOrder()
     {
         return $this->playerOrder;
+    }
+
+    /**
+     * Get the order of the players
+     * @return playerOrder
+     */
+    public function getHistogram()
+    {
+        return $this->histogram->getSerie();
     }
 
     /**

@@ -5,11 +5,8 @@ namespace Anax\View;
 $players = $diceGame->getPlayers();
 $playerTurn = $diceGame->getPlayerTurn();
 $finishedGame = $diceGame->getFinishedGame();
-
 $histogram = $diceGame->getHistogram();
-// echo "hsitogram\n";
-// var_dump($histogram);
-// echo "\n";
+
 ?>
 <h1>Dice game 100</h1>
 
