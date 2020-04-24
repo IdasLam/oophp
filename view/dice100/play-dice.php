@@ -44,8 +44,8 @@ $histogram = $diceGame->getHistogram();
     </form>
     <?php endif; ?>
 
-    <?php if ($histogram != null): ?>
-        <?php foreach($histogram as $value): ?>
+    <?php if ($histogram != null) : ?>
+        <?php foreach ($histogram as $value) : ?>
             <p><?= $value ?></p>
         <?php endforeach; ?>
     <?php endif; ?>
