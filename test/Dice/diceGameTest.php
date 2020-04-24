@@ -181,4 +181,18 @@ class DiceGameTest extends TestCase
         }
         $this->assertNotEquals($player[0], $player[1]);
     }
+
+    /**
+     * test get histogram
+     */
+    public function testgetHistogram()
+    {
+        $game = new DiceGame(4, 1);
+        $this->assertInstanceOf("\Ida\Dice\DiceGame", $game);
+        
+        $res = $game->getHistogram();
+        $exp = null;
+
+        $this->assertEquals($res, $exp);
+    }
 }

@@ -22,8 +22,12 @@ trait HistogramTrait
      */
     public function addFace($face)
     {
-        foreach($face as $roll) {
-            $this->serie[$roll] .= "*";
+        foreach ($face as $roll => $value) {
+            if (isset($this->serie[$value])) {
+                $this->serie[$value] .= "*";
+            } else {
+                $this->serie[$value] = "*";
+            }
         }
         
         for ($i = $this->min; $i <= $this->max; $i++) {
@@ -43,6 +47,4 @@ trait HistogramTrait
     {
         return $this->serie;
     }
-
-
 }

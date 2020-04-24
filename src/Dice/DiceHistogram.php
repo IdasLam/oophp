@@ -20,12 +20,12 @@ class DiceHistogram implements HistogramInterface
      * @return line
      */
     public function histogram()
-    {   
+    {
         $line = [];
 
         $this->serie = $this->getHistogramSerie();
 
-        foreach($this->serie as $face => $count) {
+        foreach ($this->serie as $face => $count) {
             $line[] = "$face: $count\n";
         }
 

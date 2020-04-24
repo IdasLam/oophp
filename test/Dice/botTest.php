@@ -64,4 +64,20 @@ class BotTest extends TestCase
 
         $this->assertNotEquals($oldCount, $newCount);
     }
+
+    /**
+     * Test to roll new rollCount, carfull
+     */
+    public function testNewRollCountCarefull()
+    {
+        $bot = new Bot(1);
+        $this->assertInstanceOf("\Ida\Dice\bot", $bot);
+        $oldCount = 0;
+        $bot->rollCount = $oldCount;
+
+        $bot->newRollCountCarefull();
+        $newCount = $bot->rollCount;
+
+        $this->assertNotEquals($oldCount, $newCount);
+    }
 }
