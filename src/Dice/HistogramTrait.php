@@ -23,6 +23,7 @@ trait HistogramTrait
     public function addFace($face)
     {
         foreach ($face as $roll => $value) {
+            $roll= $roll;
             if (isset($this->serie[$value])) {
                 $this->serie[$value] .= "*";
             } else {

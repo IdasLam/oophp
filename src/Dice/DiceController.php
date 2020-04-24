@@ -22,13 +22,6 @@ class DiceController implements AppInjectableInterface
 {
     use AppInjectableTrait;
 
-
-
-    /**
-     * @var string $db a sample member variable that gets initialised
-     */
-    private $db = "not active";
-
     /**
      * This is the index method action, it handles:
      * ANY METHOD mountpoint
