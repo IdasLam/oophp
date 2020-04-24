@@ -45,4 +45,13 @@ class Bot extends Player
     {
         $this->rollCount = rand(1, $this->maxRoll);
     }
+
+    /**
+     * Randomize rollCount "more carefull only roll max 3 times"
+     * @return void
+     */
+    public function newRollCountCarefull()
+    {
+        $this->rollCount = rand(1, 2);
+    }
 }

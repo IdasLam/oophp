@@ -26,7 +26,7 @@ class DiceGame
      * @param int $diceCount Dice count
      */
     public function __construct(int $playerCount, int $diceCount)
-    {   
+    {
         $this->diceHistogram = new DiceHistogram();
         $this->histogram = new Histogram();
 
@@ -79,15 +79,26 @@ class DiceGame
      */
     public function botRoll()
     {
+        
         $isDone = $this->players[$this->playerTurn]->botRoll();
         $rolledOne = $this->players[$this->playerTurn]->hasRolledOne();
-
+        
         $playerRoll = $this->players[$this->playerTurn]->getRoll();
         $this->histogram->injectData($this->diceHistogram, $playerRoll);
-
+        
+        // $playerScore = $this->players[$this->playerTurn]->getRoundScore();
+        
+        
         if ($rolledOne || $isDone) {
             $this->players[$this->playerTurn]->endTurn();
-            $this->players[$this->playerTurn]->newRollCount();
+            $playerScore = $this->players[$this->playerTurn]->getScore();
+
+            if ($playerScore > 60) {
+                $this->players[$this->playerTurn]->newRollCountCarefull();
+            } else {
+                $this->players[$this->playerTurn]->newRollCount();
+            }
+
             $this->nextTurn();
         }
     }
