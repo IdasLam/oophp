@@ -17,6 +17,8 @@ SET NAMES utf8;
 --
 -- Create table for my own movie database
 --
+CREATE DATABASE IF NOT EXISTS oophp;
+USE oophp;
 DROP TABLE IF EXISTS `movie`;
 CREATE TABLE `movie`
 (

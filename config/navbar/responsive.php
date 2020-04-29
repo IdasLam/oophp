@@ -93,6 +93,11 @@ return [
             "text" => "Dice 100",
             "url" => "dice_100",
             "title" => "Dice 100",
+        ],
+        [
+            "text" => "Movie",
+            "url" => "movie",
+            "title" => "Movie",
         ]
     ],
 ];
