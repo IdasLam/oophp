@@ -4,7 +4,7 @@ namespace Anax\View;
 
 ?>
 <h1>Add movie</h1>
-<form action="" method="post">
+<form action="" method="post" class="search-bar-movie">
     <label for="title">Title</label>
     <input type="text" name="title" placeholder="Guardians of the Galaxy">
     <label for="year">Year</label>

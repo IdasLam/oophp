@@ -3,7 +3,7 @@
 namespace Anax\View;
 
 ?>
-<form action="" method="get">
+<form action="" method="get" class="search-bar-movie">
     <input type="text" placeholder="Search title or year" name="search">
     <button>Search</button>
 </form>
@@ -33,6 +33,6 @@ namespace Anax\View;
     </tr>
 <?php endforeach; ?>
 </table>
-<form action="" method="post">
+<form action="" method="post" class="search-bar-movie">
     <input type="submit" name="add" value="Add movie">
 </form>

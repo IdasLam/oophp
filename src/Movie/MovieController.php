@@ -69,7 +69,9 @@ class MovieController implements AppInjectableInterface
         $this->app->db->connect();
         $id = $this->app->session->get("id");
         $sql = "SELECT * FROM movie WHERE id LIKE ?";
+
         $data["resultset"] = $this->app->db->executeFetchAll($sql, [$id]);
+        $data["title"] = "Edit a movie";
 
         $this->app->page->add("movie/edit", $data);
 

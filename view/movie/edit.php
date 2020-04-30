@@ -7,7 +7,7 @@ namespace Anax\View;
 ?>
 <?php foreach ($resultset as $row) :?>
 <h1>Edit movie: <?= $row->title ?></h1>
-    <form action="" method="post">
+    <form action="" method="post" class="search-bar-movie">
         <input type="hidden" name="id" value="<?= $row->id ?>">
         <label for="title">Title</label>
         <input type="text" name="title" value="<?= $row->title ?>">
