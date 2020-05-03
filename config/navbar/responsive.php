@@ -98,6 +98,11 @@ return [
             "text" => "Movie",
             "url" => "movie",
             "title" => "Movie",
+        ],
+        [
+            "text" => "Textfilter",
+            "url" => "textfilter",
+            "title" => "textfilter view",
         ]
     ],
 ];
