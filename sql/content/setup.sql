@@ -8,7 +8,7 @@
 -- CREATE DATABASE IF NOT EXISTS oophp;
 -- GRANT ALL ON oophp.* TO user@localhost IDENTIFIED BY "pass";
 
-USE oophp;
+-- USE oophp;
 
 -- Ensure UTF8 as chacrter encoding within connection.
 SET NAMES utf8;
