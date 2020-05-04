@@ -5785,6 +5785,10 @@ td form {
 .search-bar-movie button {
   padding: 5px;
 }
+th,
+td {
+  padding: 4px;
+}
 /**
  * Layout for responsive style through media queries.
  */
