@@ -1,6 +1,7 @@
 <?php
 
 namespace Ida\TextFilter;
+
 use \Michelf\Markdown;
 
 /**

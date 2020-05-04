@@ -15,7 +15,7 @@ namespace Anax\View;
         <th>Path</th>
         <th>Slug</th>
     </tr>
-    <?php foreach($resultset as $row) : ?>
+    <?php foreach ($resultset as $row) : ?>
         <tr>
             <td><?= $row->id ?></td>
 
@@ -42,22 +42,22 @@ namespace Anax\View;
     <?php if ($path === null) : ?>
     <a href="../overview">Back</a>
     <h1>Blog</h1>
-    <?php foreach($resultset as $row) : ?>
+        <?php foreach ($resultset as $row) : ?>
         <h2><?= $row->title ?></h2>
         <p>Published: <?= $row->published ?></p>
         <a href="route?page=blog&path=<?= $row->slug ?>">Read more</a>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
     <?php else : ?>
     <a href="../overview/route?page=blog">Back</a>
     <h1><?= $resultset->title ?></h1>
     <p>Published: <?= $resultset->published ?></p>
     <p>Using filters: <mark><?= $resultset->filter ?></mark></p>
-    <?= $data ?>
+        <?= $data ?>
     <?php endif; ?>
 <?php else : ?>
 <a href="../overview">Back</a>
 <h1><?= $resultset->title ?></h1>
 <p>Using filters: <mark><?= $resultset->filter ?></mark></p>
-<?= $data ?>
+    <?= $data ?>
 <?php endif; ?>
 

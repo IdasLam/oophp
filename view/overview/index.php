@@ -24,7 +24,7 @@ namespace Anax\View;
     <th>Deleted</th>
     <th>Type</th>
 </tr>
-<?php foreach($resultset as $row) : ?>
+<?php foreach ($resultset as $row) : ?>
 <tr>
     <td><?= $row->id ?></td>
     <td><?= $row->path ?></td>

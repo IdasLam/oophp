@@ -205,7 +205,6 @@ class OverviewController implements AppInjectableInterface
                 $data["resultset"] = $res[0];
                 $data["data"] = $dataRes;
             }
-
         } else {
             $id = $this->app->request->getGet("id");
             

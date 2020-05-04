@@ -65,19 +65,9 @@ return [
             "title" => "Om denna webbplats.",
         ],
         [
-            "text" => "Styleväljare",
-            "url" => "style",
-            "title" => "Välj stylesheet.",
-        ],
-        [
             "text" => "Docs",
             "url" => "dokumentation",
             "title" => "Dokumentation av ramverk och liknande.",
-        ],
-        [
-            "text" => "Test &amp; Lek",
-            "url" => "lek",
-            "title" => "Testa och lek med test- och exempelprogram",
         ],
         [
             "text" => "Anax dev",
@@ -100,9 +90,14 @@ return [
             "title" => "Movie",
         ],
         [
-            "text" => "Textfilter",
+            "text" => "Textfilters",
             "url" => "textfilter",
             "title" => "textfilter view",
+        ],
+        [
+            "text" => "Webpages with table content",
+            "url" => "overview",
+            "title" => "Content views",
         ]
     ],
 ];

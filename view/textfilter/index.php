@@ -1,5 +1,6 @@
 <?php // Get essentials
 namespace Anax\View;
+
 ?>
 <h1>View all the filters</h1>
 <h2>Bbcode</h2>
